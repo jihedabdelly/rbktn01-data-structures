@@ -64,7 +64,9 @@ define([
 
       it('allows sequentially additing and removing items', function() {
         stack.push('a');
+        console.log(stack)
         expect(stack.pop()).to.equal('a');
+        console.log(stack)
         stack.push('b');
         expect(stack.pop()).to.equal('b');
       });
@@ -135,7 +137,7 @@ define([
       });
 
       it('allows sequentially adding and removing items', function() {
-        queue.enqueue('a');
+        queue.enqueue('a');  
         expect(queue.dequeue()).to.equal('a');
         queue.enqueue('b');
         expect(queue.dequeue()).to.equal('b');
@@ -144,7 +146,7 @@ define([
     });
 
     describe('queue-specific behavior', function() {
-      it('removes the least recently added of two items', function() {
+      it('removes the least recently added of two items', function() {      
         queue.enqueue('a');
         queue.enqueue('b');
         expect(queue.dequeue()).to.equal('a');
@@ -152,9 +154,14 @@ define([
 
       it('removes the oldest item, after newer items have already been added and removed', function() {
         queue.enqueue('a');
+        console.log(queue)
         queue.enqueue('b');
+        console.log(queue)
         queue.dequeue();
+        console.log(queue)
         queue.enqueue('c');
+        console.log(queue)
+
         expect(queue.dequeue()).to.equal('b');
       });
     });
