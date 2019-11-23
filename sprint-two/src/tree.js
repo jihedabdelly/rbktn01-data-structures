@@ -38,17 +38,32 @@ var extend = function(to, from) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-	arr.push(value) ;
-	console.log(arr)
+	
 	this.children.push(Tree(value))
 };
 
 treeMethods.contains = function(target) {
-	return arr.indexOf(target) !== -1 ;
-	//
+	
+  if(this.value === target){
+    
+    return true
+  }
+
+  for(var i = 0; i < this.children.length; i++) {
+    console.log('iterated',this.children[i])
+    console.log(this.children[i].value,target)
+    if(this.children[i].contains(target)) {
+      
+      return true
+      
+    }
+    
+  }
+ return false 
+
 };
 
-
+console.log(arr);
 
 /*
  * Complexity: What is the time complexity of the above functions?
